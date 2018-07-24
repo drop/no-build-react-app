@@ -2,19 +2,26 @@ require([
     'react',
     'react-dom',
     'redux',
-    'react-redux'
+    'react-redux',
+    './components/TestBox',
 ],
 function(
     React,
     ReactDOM,
     Redux,
-    ReactRedux
+    ReactRedux,
+    TestBox
 ) {
     const l = React.createElement;
     const { createStore } = Redux;
 
     ReactDOM.render(
-          l('h1', {className: 'test-class'}, 'Hello, world!'),
-          document.getElementById('root')
+        l('h1', {className: 'test-class'}, [
+            'This is root component',
+            'Test string',
+            l(TestBox, {key:""}),
+            l(TestBox, {key:"1"}),
+        ]),
+        document.getElementById('root')
     );
 });
