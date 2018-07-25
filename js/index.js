@@ -1,38 +1,35 @@
-require([
+require._addStyles = function(deps) {
+    for (var i = 0; i < require._styles.length; i++) {
+        deps.push('css!' + require._styles[i]);
+    }
+    return deps;
+}
+
+require(require._addStyles([
     'react',
     'react-dom',
     'redux',
     'react-redux',
-    './components/TestBox',
-],
+    './components/App',
+]),
 function(
     React,
     ReactDOM,
     Redux,
     ReactRedux,
-    TestBox
+    App
 ) {
     const l = React.createElement;
     const { createStore } = Redux;
 
     ReactDOM.render(
-        l('h1', {className: 'test-class'}, 
-            'This is root component',
-            'Test string',
-            l(TestBox),
-            l('div', {style: {color: 'green'}}, 
-                l(TestBox, '',
-                    l('div', {style: {color: 'yellow'}},
-                        'NEW STRING 1',
-                        'NEW STRING 2',
-                    ),
-                    l('div', {style: {color: 'magenta'}},
-                        'NEW STRING 1',
-                        'NEW STRING 2',
-                    )
-                ),
-                'One more test string'
-            )
+        l(React.Fragment, '',
+            false ? null :
+                l('link', {
+                    rel:"stylesheet",
+                    href: require._themes['Cosmo']
+                }),
+            l(App)
         ),
         document.getElementById('root')
     );
