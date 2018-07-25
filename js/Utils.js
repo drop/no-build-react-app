@@ -1,11 +1,14 @@
 define({
-    extendClass: function(src, newObj) {
-        var obj = Object.create(src);
-        for (var key in newObj) {
-            if (src.hasOwnProperty(key)) obj[key] = newObj[key];
-        }
+    extendClass: function(SrcClass, ExtProps) {
         return function() {
-           return obj; 
+            var obj = Object.create(SrcClass.prototype);
+
+            for (var key in ExtProps) {
+                obj[key] = ExtProps[key];
+            }
+
+            SrcClass.apply(obj, arguments);
+            return obj; 
         };
     },
 });

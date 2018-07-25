@@ -16,12 +16,24 @@ function(
     const { createStore } = Redux;
 
     ReactDOM.render(
-        l('h1', {className: 'test-class'}, [
+        l('h1', {className: 'test-class'}, 
             'This is root component',
             'Test string',
-            l(TestBox, {key:""}),
-            l(TestBox, {key:"1"}),
-        ]),
+            l(TestBox),
+            l('div', {style: {color: 'green'}}, 
+                l(TestBox, '',
+                    l('div', {style: {color: 'yellow'}},
+                        'NEW STRING 1',
+                        'NEW STRING 2',
+                    ),
+                    l('div', {style: {color: 'magenta'}},
+                        'NEW STRING 1',
+                        'NEW STRING 2',
+                    )
+                ),
+                'One more test string'
+            )
+        ),
         document.getElementById('root')
     );
 });
