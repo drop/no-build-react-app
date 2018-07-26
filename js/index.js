@@ -11,26 +11,40 @@ require(require._addStyles([
     'redux',
     'react-redux',
     './components/App',
+    './Utils',
 ]),
 function(
     React,
     ReactDOM,
     Redux,
     ReactRedux,
-    App
+    App,
+    Utils
 ) {
-    const l = React.createElement;
-    const { createStore } = Redux;
+    var l = React.createElement;
+    var createStore = Redux.createStore;
+    var rootComponent = l(Utils.createReactClass({
+        render: function() {
+            var self = this;
+            console.log(this.props);
+            setTimeout(function() {
+                require._loadTheme = true;
+                self.forceUpdate();
+            }, 5000); 
+
+            return l(React.Fragment, {},
+                require._loadTheme ? 
+                    l('link', {
+                        rel:"stylesheet",
+                        href: require._themes['Cosmo']
+                    }) : null,
+                    l(App)
+            );
+        },
+    }));
 
     ReactDOM.render(
-        l(React.Fragment, {},
-            //false ? null :
-                //l('link', {
-                    //rel:"stylesheet",
-                    //href: require._themes['Cosmo']
-                //}),
-            l(App)
-        ),
+        rootComponent,
         document.getElementById('root'),
         function() {
             document.getElementById('preloader').style.display = 'none';

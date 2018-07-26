@@ -12,7 +12,7 @@ function(
 ) {
     const l = React.createElement;
 
-    return Utils.extendClass(React.Component, {
+    return Utils.createReactClass({
 
         render: function() {
             var chld = React.Children.toArray(this.props.children);

@@ -1,14 +1,23 @@
-define({
-    extendClass: function(SrcClass, ExtProps) {
-        return function() {
-            var obj = Object.create(SrcClass.prototype);
+define([
+    'react',
+],
+function(React) {
+    return {
+        extendClass: function(SrcClass, extProps) {
+            return function() {
+                var obj = Object.create(SrcClass.prototype);
 
-            for (var key in ExtProps) {
-                obj[key] = ExtProps[key];
-            }
+                for (var key in extProps) {
+                    obj[key] = extProps[key];
+                }
 
-            SrcClass.apply(obj, arguments);
-            return obj; 
-        };
-    },
+                SrcClass.apply(obj, arguments);
+                return obj; 
+            };
+        },
+
+        createReactClass: function(extProps) {
+            return this.extendClass(React.Component, extProps);
+        }
+    };
 });
