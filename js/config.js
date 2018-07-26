@@ -17,11 +17,6 @@ requirejs.config({
     },
 });
 
-require._styles = [
-    '../css/global',
-    'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min',
-];
-
 require._themes = {
     'default': 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css',
     'Yeti': 'https://bootswatch.com/3/yeti/bootstrap.min.css',
@@ -33,5 +28,15 @@ require._themes = {
     'United': 'https://bootswatch.com/3/united/bootstrap.min.css',
     'Cosmo': 'https://bootswatch.com/3/cosmo/bootstrap.min.css',
     'Cyborg': 'https://bootswatch.com/3/cyborg/bootstrap.min.css',
+    'Cerulean': 'https://bootswatch.com/3/cerulean/bootstrap.min.css',
+    'Flatly': 'https://bootswatch.com/3/flatly/bootstrap.min.css',
+    'Journal': 'https://bootswatch.com/3/journal/bootstrap.min.css',
+    'Paper': 'https://bootswatch.com/3/paper/bootstrap.min.css',
+    'Readable': 'https://bootswatch.com/3/readable/bootstrap.min.css',
 };
 
+require._styles = [
+    '../css/global',
+    'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min',
+    require._themes.Paper
+];

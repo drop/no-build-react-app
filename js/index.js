@@ -23,14 +23,17 @@ function(
     const { createStore } = Redux;
 
     ReactDOM.render(
-        l(React.Fragment, '',
-            false ? null :
-                l('link', {
-                    rel:"stylesheet",
-                    href: require._themes['Cosmo']
-                }),
+        l(React.Fragment, {},
+            //false ? null :
+                //l('link', {
+                    //rel:"stylesheet",
+                    //href: require._themes['Cosmo']
+                //}),
             l(App)
         ),
-        document.getElementById('root')
+        document.getElementById('root'),
+        function() {
+            document.getElementById('preloader').style.display = 'none';
+        }
     );
 });
