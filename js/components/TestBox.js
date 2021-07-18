@@ -1,27 +1,24 @@
 define([
-    'react',
-    'redux',
-    'react-redux',
-    '../Utils',
+    "react",
+    "redux",
+    "react-redux",
+    "../Utils"
 ],
 function(
     React,
     Redux,
     ReactRedux,
-    Utils,
+    Utils
 ) {
-    const l = React.createElement;
+    var E = React.createElement;
 
-    return Utils.createReactClass({
+    return function(props) {
+        var chld = React.Children.toArray(props.children);
 
-        render: function() {
-            var chld = React.Children.toArray(this.props.children);
-
-            return l('div', {style:{color: "red"}},
-                chld[0],
-                'TEST CONTENT',
-                chld[1]
-            );
-        },
-    });
+        return E("div", null,
+            chld[0],
+            "TEST CONTENT",
+            chld[1]
+        );
+    };
 });

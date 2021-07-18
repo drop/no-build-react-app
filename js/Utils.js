@@ -18,6 +18,10 @@ function(React) {
 
         createReactClass: function(extProps) {
             return this.extendClass(React.Component, extProps);
-        }
+        },
+
+        createComponent: function(extProps) {
+            return React.createElement(this.createReactClass(extProps));
+        },
     };
 });
